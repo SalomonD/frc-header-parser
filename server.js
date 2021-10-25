@@ -20,8 +20,8 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/api/whoami", async function (req, res) {
-  const ipaddress = await publicIp.v4();
+app.get("/api/whoami", function (req, res) {
+  const ipaddress = req.ip.split(":").pop();
   const language = req.headers["accept-language"];
   const software = req.headers['user-agent'];
 
